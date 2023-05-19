@@ -36,57 +36,6 @@ class Responsive {
     };
 }
 
-function convertPercentageToDP(percentage: number = 100): number {
-    var { width } = Dimensions.get('window');
-
-    if (typeof percentage == 'string') {
-        percentage = parseFloat(percentage);
-
-        // In case percentage return NaN value.
-        if (percentage != percentage) {
-            percentage = 100;
-        }
-    }
-
-    var valInDP = (percentage * width) / 100;
-
-    return PixelRatio.roundToNearestPixel(valInDP);
-}
-
-function responsiveOnWidthScale(dp: number): number {
-    const WIDTH = 428;
-    return convertPercentageToDP((dp / WIDTH) * 100);
-}
-
-function convertPercentageToDPHeight(percentage: number = 100): number {
-    var { height } = Dimensions.get('window');
-
-    if (typeof percentage == 'string') {
-        percentage = parseFloat(percentage);
-
-        // In case percentage return NaN value.
-        if (percentage != percentage) {
-            percentage = 100;
-        }
-    }
-
-    var valInDP = (percentage * height) / 100;
-
-    return PixelRatio.roundToNearestPixel(valInDP);
-}
-
-function responsiveOnHeightScale(dp: number): number {
-    const HEIGHT = 809;
-    return convertPercentageToDPHeight((dp / HEIGHT) * 100);
-}
-
-function calcHeightFromPercentage(percentage: number): number {
-    return screenheight * (percentage / 100);
-}
-function calcWidthFromPercentage(percentage: number): number {
-    return screenwidth * (percentage / 100);
-}
-
 const instance = new Responsive();
 const responsiveWidth = instance.calcWidth;
 const responsiveHeight = instance.calcHeight;
@@ -102,9 +51,4 @@ export {
     responsiveFont,
     screenwidth,
     screenheight,
-    convertPercentageToDP,
-    responsiveOnWidthScale,
-    responsiveOnHeightScale,
-    calcHeightFromPercentage,
-    calcWidthFromPercentage,
 };
